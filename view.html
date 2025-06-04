@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registered Players - Alzkrt FIFA Tournament</title>
+  <link rel="stylesheet" href="styles/modern.css">
+  <style>
+    body {
+      background-color: #1a1a1a;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #00ccff;
+    }
+    table {
+      width: 90%;
+      margin: 30px auto;
+      border-collapse: collapse;
+      background-color: #222;
+    }
+    th, td {
+      border: 1px solid #444;
+      padding: 12px;
+      text-align: center;
+    }
+    th {
+      background-color: #00ccff;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Registered Players</h1>
+
+  <table id="playersTable">
+    <thead>
+      <tr>
+        <th>Player Name</th>
+        <th>Phone Number</th>
+        <th>Timestamp</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    fetch("https://api.sheety.co/fcedbc61fa9860d301bd27034d81b32f/alzkrtPlayerRegistrations/sheet1")
+      .then(response => response.json())
+      .then(data => {
+        const table = document.querySelector("#playersTable tbody");
+        data.sheet1.forEach(player => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${player.playerName}</td>
+            <td>${player.phoneNumber}</td>
+            <td>${new Date(player.timestamp).toLocaleString()}</td>
+          `;
+          table.appendChild(row);
+        });
+      })
+      .catch(error => {
+        console.error("Error loading data:", error);
+        document.body.innerHTML += "<p style='color:red; text-align:center;'>⚠️ Failed to load player data.</p>";
+      });
+  </script>
+
+</body>
+</html>
