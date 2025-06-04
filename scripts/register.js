@@ -27,12 +27,18 @@ document.addEventListener("DOMContentLoaded", function () {
       },
       body: JSON.stringify(data)
     })
-      .then(response => response.json().then(data => {
-  if (response.ok) {
-    alert("Registration successful!");
-    form.reset();
-  } else {
-    console.error("Error response:", data);
-    alert("Error: " + JSON.stringify(data));
-  }
-}))
+    .then(response => response.json().then(dataRes => {
+      if (response.ok) {
+        alert("Registration successful!");
+        form.reset();
+      } else {
+        console.error("Error response from Sheety:", dataRes);
+        alert("Error: " + JSON.stringify(dataRes));
+      }
+    }))
+    .catch(error => {
+      console.error("Network error:", error);
+      alert("Network Error: " + error);
+    });
+  });
+});
