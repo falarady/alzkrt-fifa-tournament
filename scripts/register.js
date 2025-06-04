@@ -27,16 +27,12 @@ document.addEventListener("DOMContentLoaded", function () {
       },
       body: JSON.stringify(data)
     })
-      .then(response => {
-        if (response.ok) {
-          alert("Registration successful!");
-          form.reset();
-        } else {
-          alert("Failed to register. Try again.");
-        }
-      })
-      .catch(error => {
-        alert("Error: " + error);
-      });
-  });
-});
+      .then(response => response.json().then(data => {
+  if (response.ok) {
+    alert("Registration successful!");
+    form.reset();
+  } else {
+    console.error("Error response:", data);
+    alert("Error: " + JSON.stringify(data));
+  }
+}))
