@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Generated Teams - Alzkrt FIFA Tournament</title>
+  <link rel="stylesheet" href="styles/modern.css">
+  <style>
+    body {
+      background-color: #1a1a1a;
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #00ccff;
+    }
+    #generateButton {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 25px;
+      background-color: #00ccff;
+      color: #000;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #teamsContainer {
+      max-width: 600px;
+      margin: 30px auto;
+    }
+    .team {
+      background-color: #222;
+      padding: 15px;
+      margin: 10px 0;
+      border: 1px solid #444;
+      border-radius: 8px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Generate Random Teams</h1>
+  <button id="generateButton">🎲 Generate Teams</button>
+  <div id="teamsContainer"></div>
+
+  <script>
+    document.getElementById("generateButton").addEventListener("click", () => {
+      fetch("https://api.sheety.co/fcedbc61fa9860d301bd27034d81b32f/alzkrtPlayerRegistrations/sheet1")
+        .then(res => res.json())
+        .then(data => {
+          let players = data.sheet1.map(p => p.playerName).filter(n => n);
+          
+          // Shuffle players
+          for (let i = players.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [players[i], players[j]] = [players[j], players[i]];
+          }
+
+          const teamsHTML = players.reduce((acc, val, idx) => {
+            if (idx % 2 === 0) {
+              acc += `<div class='team'><strong>Team ${Math.floor(idx / 2) + 1}</strong><br>`;
+              acc += `${val}<br>`;
+            } else {
+              acc += `${val}</div>`;
+            }
+            return acc;
+          }, "");
+
+          document.getElementById("teamsContainer").innerHTML = teamsHTML;
+        })
+        .catch(err => {
+          console.error("Error generating teams:", err);
+          document.getElementById("teamsContainer").innerHTML = "<p style='text-align:center;'>⚠️ Failed to load players.</p>";
+        });
+    });
+  </script>
+
+</body>
+</html>
