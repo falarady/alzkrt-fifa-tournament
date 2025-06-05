@@ -72,3 +72,24 @@ body {
 .cta-button:hover {
   background-color: #009ecc;
 }
+.sponsor {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #111;
+  color: #00ccff;
+}
+.sponsor-box {
+  margin-top: 20px;
+  display: inline-block;
+  background-color: #222;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #00ccff;
+  box-shadow: 0 0 10px rgba(0, 204, 255, 0.3);
+}
+.sponsor-img {
+  width: 180px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  border: 2px solid #00ccff;
+}
