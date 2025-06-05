@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Alzkrt FIFA Tournament</title>
+  <link rel="stylesheet" href="styles/modern.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background-color: #111;
+      color: #00ccff;
+    }
+    .nav-brand {
+      font-size: 1.6em;
+      font-weight: bold;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+    }
+    .nav-links li {
+      display: inline;
+    }
+    .nav-links a {
+      color: #00ccff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .sponsor-mini {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .sponsor-mini img {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      border: 2px solid #00ccff;
+    }
+    .hero img {
+      width: 100%;
+      display: block;
+    }
+    .info {
+      text-align: center;
+      padding: 40px 20px;
+      background-color: #1a1a1a;
+      color: #fff;
+    }
+    .cta-button {
+      margin-top: 20px;
+      background-color: #00ccff;
+      color: #111;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1em;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-brand">⚽ Alzkrt FIFA</div>
+    <div class="sponsor-mini">
+      <span>Sponsored by <strong>Fawaz</strong></span>
+      <img src="sponsor-fawaz.jpg" alt="Fawaz">
+    </div>
+  </nav>
+
+  <header class="hero">
+    <img src="poster.png" alt="Tournament Poster">
+  </header>
+
+  <section class="info">
+    <h1>Welcome to Alzkrt FIFA Tournament</h1>
+    <p><strong>Date:</strong> June 9, 2025</p>
+    <p><strong>Location:</strong> Heavens Land Rest House</p>
+    <p><strong>Format:</strong> 2v2 Knockout</p>
+    <a class="cta-button" href="register.html">🎮 Register Now</a>
+  </section>
+
+
+  <audio id="bg-music" autoplay loop>
+    <source src="champions-epic-theme.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+</body>
+
+</html>
