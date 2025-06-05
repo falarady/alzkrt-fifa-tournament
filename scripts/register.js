@@ -29,8 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     .then(response => response.json().then(dataRes => {
       if (response.ok) {
-        alert("Registration successful!");
-        form.reset();
+        window.location.href = "success.html";
       } else {
         console.error("Error response from Sheety:", dataRes);
         alert("Error: " + JSON.stringify(dataRes));
